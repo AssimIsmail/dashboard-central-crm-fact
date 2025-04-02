@@ -1,0 +1,4 @@
+export const AUTH_ACTIONS = {
+    SET_IS_LOADING: "SET_IS_LOADING",
+    SET_CURRENT_USER: "SET_CURRENT_USER",
+  };
