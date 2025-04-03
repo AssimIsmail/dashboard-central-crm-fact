@@ -10,8 +10,7 @@ export default function Layout() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-    const { authState } = useAuthContext();
-  
+  const { authState } = useAuthContext();
   return (
     <div className="flex w-full flex-col text-xs ">
       <Toaster position="top-left" reverseOrder={false} />

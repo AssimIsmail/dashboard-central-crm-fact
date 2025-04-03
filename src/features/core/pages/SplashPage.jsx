@@ -17,14 +17,11 @@ export default function SplashPage() {
   useEffect(() => {
     if (!authState.isLoading) {
       const user = authState.currentUser;
-
       if (user) {
-        if (location.pathname === "/session") {
-          if (user.role === "ADMIN_CENTRAL") {
-            navigate("/central");
-          } else {
-            navigate("/central"); 
-          }
+        if (user.role === "ADMIN_CENTRAL") {
+          navigate("/central");
+        } else if (user === null) {
+          navigate("/session");
         }
       }
     }

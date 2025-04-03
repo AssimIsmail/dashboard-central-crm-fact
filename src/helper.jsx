@@ -20,7 +20,7 @@ function toastError(message) {
       } pointer-events-auto flex w-full max-w-sm rounded-md border border-red-500 bg-white p-3 sm:p-4 text-xs sm:text-sm text-red-700 shadow-md z-50`}
     >
       <div className="flex flex-col gap-0.5">
-        <h3 className="font-bold">Erreur</h3>
+        {/* <h3 className="font-bold">Erreur</h3> */}
         <p>{message}</p>
       </div>
     </div>
@@ -35,7 +35,7 @@ function toastSuccess(message) {
       } pointer-events-auto flex w-full max-w-sm rounded-md border border-green-500 bg-white p-3 sm:p-4 text-xs sm:text-sm text-green-700 shadow-md z-50`}
     >
       <div className="flex flex-col gap-0.5">
-        <h3 className="font-bold">Notification</h3>
+        {/* <h3 className="font-bold">Notification</h3> */}
         <p>{message}</p>
       </div>
     </div>

@@ -17,6 +17,11 @@ axiosClient.interceptors.response.use(
     return response;
   },
   (error) => {
+    // if (error.response && error.response.status === 401) {
+    //   if (window.location.pathname !== "/session") {
+    //     window.location.href = "/session"; 
+    //   }
+    // }
     throw error;
   }
 );

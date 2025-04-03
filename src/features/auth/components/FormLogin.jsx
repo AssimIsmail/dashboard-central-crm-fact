@@ -37,7 +37,7 @@ export default function FormLogin() {
     >
       <div className="flex flex-col gap-4">
         <div className="flex w-full flex-col gap-1.5">
-          <label className="font-bold" htmlFor="ID_EMAIL">
+          <label className="font-base" htmlFor="ID_EMAIL">
             Email <span className="text-red-600">*</span>
           </label>
           <input
@@ -51,7 +51,7 @@ export default function FormLogin() {
         </div>
 
         <div className="flex w-full flex-col gap-1.5">
-          <label className="font-bold" htmlFor="ID_PASSWORD">
+          <label className="font-base" htmlFor="ID_PASSWORD">
             Mot de passe <span className="text-red-600">*</span>
           </label>
           <div className="flex gap-2">
