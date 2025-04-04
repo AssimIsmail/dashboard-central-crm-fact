@@ -1,4 +1,5 @@
 import { EntreprisesProvider } from "./context/entreprises/EntreprisesProvider";
+import { CreateEntreprisePage } from "./pages/CreateEntreprisePage";
 import { EntreprisePage } from "./pages/EntreprisePage";
 
 const entrepriseRoutes = [
@@ -9,6 +10,10 @@ const entrepriseRoutes = [
         {
           path: "",
           element: <EntreprisePage />,
+        },
+        {
+          path: "create",
+          element: <CreateEntreprisePage />,
         }
       ]
     },

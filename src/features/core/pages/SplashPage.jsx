@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import LoaderSplash from "../components/LoaderSplash";
 import { useAuthContext } from "../../auth/context/AuthProvider";
 import useAuthActions from "../../auth/hooks/useAuthActions";

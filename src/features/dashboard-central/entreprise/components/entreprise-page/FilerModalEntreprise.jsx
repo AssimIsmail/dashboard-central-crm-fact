@@ -7,7 +7,7 @@ export default function FilerModalEntreprise({ onClose, isOpen }) {
   const nameRef = useRef(null);
   const ICERef = useRef(null);
   const paysRef = useRef(null);
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(null);
 
   const onSubmit = (event) => {
     event.preventDefault();

@@ -9,15 +9,16 @@ export default function FilerModal({ isOpen, onClose, children }) {
   };
 
   useEffect(() => {
-    if (isOpen) {
-        filterRef.current.classList.remove(`translate-x-full`);
-        filterRef.current.classList.add(`translate-x-0`);
-      } else {
-        filterRef.current.classList.remove(`translate-x-0`);
-        filterRef.current.classList.add(`translate-x-full`);
-      }
-      
+    if (isOpen && filterRef.current) {
+      filterRef.current.classList.remove("translate-x-full");
+      filterRef.current.classList.add("translate-x-0");
+    } else if (filterRef.current) {
+      filterRef.current.classList.remove("translate-x-0");
+      filterRef.current.classList.add("translate-x-full");
+    }
   }, [isOpen]);
+
+  if (!isOpen) return null; 
 
   return (
     <>
