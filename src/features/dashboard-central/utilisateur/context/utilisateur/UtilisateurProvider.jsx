@@ -1,8 +1,8 @@
 import { useContext, useReducer } from "react";
 import { Outlet } from "react-router-dom";
-import UtilisateurContext from "./UtilisateursContext";
-import { UtilisateurReducer } from "./UtilisateursReducer";
-import { UtilisateurInitialState } from "./UtilisateursInitialState";
+import UtilisateurContext from "./UtilisateurContext";
+import { UtilisateurReducer } from "./UtilisateurReducer";
+import { UtilisateurInitialState } from "./UtilisateurInitialState";
 
 export const useUtilisateurContext = () => useContext(UtilisateurContext);
 
