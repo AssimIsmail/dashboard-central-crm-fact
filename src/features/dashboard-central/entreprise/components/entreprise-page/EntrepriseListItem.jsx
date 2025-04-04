@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { CiMail } from "react-icons/ci";
-import { FiPhone, FiGlobe } from "react-icons/fi";
+import { FiPhone, FiGlobe, FiEdit } from "react-icons/fi";
 import ConfirmationModal from "../../../../core/components/UI/ConfirmationModal";
 import useEntreprisesActions from "../../hooks/useEntreprisesActions";
 import { toastError, toastSuccess } from "../../../../../helper";
+import { Link } from "react-router-dom";
 
 export default function EntrepriseListItem({ entreprise }) {
   const [isActive, setIsActive] = useState(entreprise?.status);
@@ -26,8 +27,7 @@ export default function EntrepriseListItem({ entreprise }) {
       toastSuccess(message);
 
     } catch (error) {
-      console.log(error);
-      toastError(error)
+      toastError(error.response.data.error);
     } finally {
       setShowConfirmation(false);
     }
@@ -65,7 +65,7 @@ export default function EntrepriseListItem({ entreprise }) {
           <FiGlobe size={18} /> {entreprise?.web_site}
         </p>
       </div>
-      <div className="flex justify-between gap-4">
+      <div className="flex justify-between gap-1">
         <div className="flex justify-between items-center border border-gray-300 px-4 py-2 rounded-md w-40">
           <span className="text-gray-600 font-medium">Utilisateurs</span>
           <p className="text-gray-800 font-semibold">30</p>
@@ -74,6 +74,10 @@ export default function EntrepriseListItem({ entreprise }) {
           <span className="text-gray-600 font-medium">Factures</span>
           <p className="text-gray-800 font-semibold">199</p>
         </div>
+        <Link to={`/central/entreprises/${entreprise.id}/update`} className="flex justify-between items-center border border-gray-300  rounded-md p-2 ">
+        <FiEdit
+          size={18}/>          
+        </Link>
       </div>
       <ConfirmationModal
         isOpen={showConfirmation}

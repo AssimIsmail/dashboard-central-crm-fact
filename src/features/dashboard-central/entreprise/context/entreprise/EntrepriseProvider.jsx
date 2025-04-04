@@ -7,7 +7,7 @@ import { EntrepriseInitialState } from "./EntrepriseInitialState";
 
 export const useEntrepriseContext = () => useContext(EntrepriseContext);
 
-export function EntreprisesProvider() {
+export function EntrepriseProvider() {
   const [entrepriseState, entrepriseDispatch] = useReducer(
     EntrepriseReducer,
     EntrepriseInitialState

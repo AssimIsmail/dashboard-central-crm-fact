@@ -13,8 +13,6 @@ export function EntreprisePage() {
   const [searchParams] = useSearchParams();
   const { getEntreprises } = useEntreprisesActions();
   const { entreprisesState } = useEntreprisesContext();
-// console.log(entreprisesState);
-
   useEffect(() => {
     getEntreprises(searchParams.toString());
   }, [searchParams]);

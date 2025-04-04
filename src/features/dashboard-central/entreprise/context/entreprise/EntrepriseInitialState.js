@@ -1,5 +1,5 @@
 export const EntrepriseInitialState = {
-    entreprises: null,
+    entreprise: null,
     isLoading: true,
   };
   
