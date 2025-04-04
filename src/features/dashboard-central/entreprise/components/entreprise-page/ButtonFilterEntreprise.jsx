@@ -17,10 +17,10 @@ export default function ButtonFilterEntreprise() {
     <>
       <button
         onClick={handleOnClickOpenEntrepriseFilter}
-        className="flex items-center gap-2 p-2 px-4 bg-white border-2 rounded-md border-gray-600 text-dark hover:bg-light cursor-pointer"
+        className="flex items-center gap-2 p-2 px-4 bg-white border-1 rounded-md border-gray-500 text-dark hover:bg-light cursor-pointer"
       >
-        <FiFilter size={16} className="text-gray-600" />
-        <div className="font-bold text-gray-600">Filter</div>
+        <FiFilter size={16} className="text-gray-500" />
+        <div className="font-bold text-gray-500">Filter</div>
       </button>
       <FilerModalEntreprise
         isOpen={isEntrepriseFilterOpen}

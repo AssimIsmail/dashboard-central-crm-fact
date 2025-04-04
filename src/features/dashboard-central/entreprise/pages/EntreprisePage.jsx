@@ -6,6 +6,7 @@ import useEntreprisesActions from "../hooks/useEntreprisesActions";
 import { useSearchParams } from "react-router-dom";
 import { useEntreprisesContext } from "../context/entreprises/EntreprisesProvider";
 import Pagination from "../../../core/components/UI/Pagination";
+import EntreprisesList from "../components/entreprise-page/EntreprisesList";
 
 export function EntreprisePage() {
   const [searchParams] = useSearchParams();
@@ -26,8 +27,8 @@ export function EntreprisePage() {
       {/* {entreprisesState.isLoading ? (
         <LoaderEntreprisesList />
       ) : (
+        )} */}
         <EntreprisesList entreprises={entreprisesState.entreprises} />
-      )} */}
       <Pagination
         isLoading={entreprisesState.isLoading}
         pagination={entreprisesState.pagination}

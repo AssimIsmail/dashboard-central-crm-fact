@@ -8,8 +8,6 @@ export default function SplashPage() {
   const { authState } = useAuthContext();
   const { getCurrentUser } = useAuthActions();
   const navigate = useNavigate();
-  const location = useLocation();
-
   useEffect(() => {
     getCurrentUser();
   }, []);
@@ -20,12 +18,10 @@ export default function SplashPage() {
       if (user) {
         if (user.role === "ADMIN_CENTRAL") {
           navigate("/central");
-        } else if (user === null) {
-          navigate("/session");
         }
       }
     }
-  }, [authState.currentUser, authState.isLoading, location.pathname]);
+  }, [authState.currentUser, authState.isLoading]);
 
   if (authState.isLoading) {
     return <LoaderSplash />;
