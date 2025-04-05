@@ -1,4 +1,4 @@
-import { UTILISATEUR_ACTIONS } from "./UTILISATEURS_ACTIONS";
+import { UTILISATEUR_ACTIONS } from "./UTILISATEUR_ACTIONS";
 
 export function UtilisateurReducer(state, action) {
   switch (action.type) {

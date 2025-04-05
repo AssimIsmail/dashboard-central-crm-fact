@@ -1,17 +1,5 @@
 import toast from "react-hot-toast";
 
-const generateRandomPassword = () => {
-  const length = 16; 
-  const charset =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%?";
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * charset.length);
-    password += charset[randomIndex];
-  }
-  return password;
-};
-
 function toastError(message) {
   toast.custom((t) => (
     <div
@@ -41,5 +29,12 @@ function toastSuccess(message) {
     </div>
   ));
 }
+function getRoleLabel(role) {
+  const roleMap = {
+    ADMIN_CENTRAL: "Administrateur Central",
+    USER: "Utilisateur",
+  };
 
-export { generateRandomPassword, toastSuccess, toastError };
+  return roleMap[role] || role;
+}
+export { toastSuccess, toastError, getRoleLabel };
