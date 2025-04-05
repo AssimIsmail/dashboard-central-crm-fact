@@ -54,7 +54,7 @@ export default function useUtilisateursActions() {
       utilisateurDispatch({
         type: UTILISATEUR_ACTIONS.SET_UTILISATEUR,
         payload: {
-          utilisateurs: data.utilisateurs,
+          utilisateur: data.utilisateur,
         },
       });
       // eslint-disable-next-line no-useless-catch

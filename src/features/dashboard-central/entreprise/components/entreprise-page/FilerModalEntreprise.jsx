@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import FilerModal from "../../../../core/components/UI/FilerModal";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function FilerModalEntreprise({ onClose, isOpen }) {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -28,7 +28,14 @@ export default function FilerModalEntreprise({ onClose, isOpen }) {
     setStatus("");
     setSearchParams({ page: "1" });
   };
-
+  useEffect(() => {
+    if (isOpen) {
+      if (nameRef.current) nameRef.current.value = searchParams.get("name") || "";
+      if (ICERef.current) ICERef.current.value = searchParams.get("ice") || "";
+      if (paysRef.current) paysRef.current.value = searchParams.get("pays") || "";
+      setStatus(searchParams.get("status") || "");
+    }
+  }, [isOpen]);
   return (
     <FilerModal onClose={onClose} isOpen={isOpen}>
       <form className="flex flex-col gap-2" onSubmit={onSubmit}>

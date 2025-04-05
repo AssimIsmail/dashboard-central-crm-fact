@@ -9,16 +9,16 @@ import { UtilisateursPage } from "./pages/UtilisateursPage";
 const utilisateurRoutes = [
   {
     path: "utilisateurs",
-    element: <UtilisateursProvider />,
+    element: <EntreprisesProvider />,
     children: [
       {
         path: "",
-        element: <UtilisateursPage />,
-      },
-      {
-        path: "",
-        element: <EntreprisesProvider />,
+        element: <UtilisateursProvider />,
         children: [
+          {
+            path: "",
+            element: <UtilisateursPage />,
+          },
           {
             path: "create",
             element: <CreateUtilisateurPage />,
@@ -30,12 +30,10 @@ const utilisateurRoutes = [
               {
                 path: "update",
                 element: <UpdateUtilisateurPage />,
-                children: [
-                  {
-                    path: "password",
-                    element: <UpdatePasswordUtilisateurPage />,
-                  },
-                ],
+              },
+              {
+                path: "password",
+                element: <UpdatePasswordUtilisateurPage />,
               },
             ],
           },

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FiFilter } from "react-icons/fi";
 import FilerModalUtilisateur from "./FilerModalUtilisateur";
 
-export default function ButtonFilterUtilisateur() {
+export default function ButtonFilterUtilisateur({entreprises}) {
   const [isUtilisateurFilterOpen, setIsUtilisateurFilterOpen] = useState(false);
 
   const handleOnClickOpenUtilisateurFilter = () => {
@@ -25,6 +25,7 @@ export default function ButtonFilterUtilisateur() {
       <FilerModalUtilisateur
         isOpen={isUtilisateurFilterOpen}
         onClose={handleOnClickCloseUtilisateurFilter}
+        entreprises={entreprises}
       />
     </>
   );

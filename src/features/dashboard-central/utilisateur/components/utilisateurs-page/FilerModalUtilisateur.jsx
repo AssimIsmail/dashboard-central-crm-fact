@@ -1,21 +1,24 @@
 import { useSearchParams } from "react-router-dom";
 import FilerModal from "../../../../core/components/UI/FilerModal";
-import { useRef, useState } from "react";
-import { useEntreprisesContext } from "../../../entreprise/context/entreprises/EntreprisesProvider";
+import { useEffect, useRef, useState } from "react";
 
-export default function FilerModalUtilisateur({ onClose, isOpen }) {
+export default function FilerModalUtilisateur({
+  onClose,
+  isOpen,
+  entreprises,
+}) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { entreprisesState } = useEntreprisesContext();
   const fullnameRef = useRef(null);
   const emailRef = useRef(null);
 
-
   const [status, setStatus] = useState(null);
   const [role, setRole] = useState(null);
+  const entrepriseIdRef = useRef(null);
 
   const onSubmit = (event) => {
     event.preventDefault();
     const filters = {
+      entreprise_id: entrepriseIdRef.current.value,
       full_name: fullnameRef.current.value,
       email: emailRef.current.value,
       status,
@@ -28,11 +31,24 @@ export default function FilerModalUtilisateur({ onClose, isOpen }) {
   const handleReset = () => {
     fullnameRef.current.value = "";
     emailRef.current.value = "";
+    entrepriseIdRef.current.value = "";
     setStatus("");
     setRole("");
 
     setSearchParams({ page: "1" });
   };
+  useEffect(() => {
+    if (isOpen) {
+      if (fullnameRef.current)
+        fullnameRef.current.value = searchParams.get("full_name") || "";
+      if (emailRef.current)
+        emailRef.current.value = searchParams.get("email") || "";
+      if (entrepriseIdRef.current)
+        entrepriseIdRef.current.value = searchParams.get("entreprise_id") || "";
+      setStatus(searchParams.get("status") || "");
+      setRole(searchParams.get("role") || "");
+    }
+  }, [isOpen]);
 
   return (
     <FilerModal onClose={onClose} isOpen={isOpen}>
@@ -89,6 +105,23 @@ export default function FilerModalUtilisateur({ onClose, isOpen }) {
             <option value="">Sélectionner un role</option>
             <option value="ADMIN_CENTRAL">Administrateur Central</option>
             <option value="USER">Utilisateur</option>
+          </select>
+        </div>
+        <div className="flex flex-col gap-1">
+          <label className="font-bold">Entreprise</label>
+          <select
+            ref={entrepriseIdRef}
+            className="px-6 py-3 border-2 rounded-md border-gray-400"
+            defaultValue=""
+          >
+            <option value="" disabled>
+              Sélectionnez une entreprise
+            </option>
+            {entreprises?.map((entreprise) => (
+              <option key={entreprise.id} value={entreprise.id}>
+                {entreprise.name} - {entreprise.localisation}
+              </option>
+            ))}
           </select>
         </div>
         <div className="flex gap-2">

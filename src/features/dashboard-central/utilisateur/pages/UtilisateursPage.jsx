@@ -7,12 +7,19 @@ import useUtilisateursActions from "../hooks/useUtilisateursActions";
 import { useSearchParams } from "react-router-dom";
 import Pagination from "../../../core/components/UI/Pagination";
 import UtilisateursList from "../components/utilisateurs-page/UtilisateursList";
+import useEntreprisesActions from "../../entreprise/hooks/useEntreprisesActions";
+import { useEntreprisesContext } from "../../entreprise/context/entreprises/EntreprisesProvider";
+import LoaderUtilisateursList from "../components/update-utilisateur-page/LoaderUtilisateursList";
 
 export function UtilisateursPage() {
   const [searchParams] = useSearchParams();
   const { getUtilisateurs } = useUtilisateursActions();
   const { utilisateursState } = useUtilisateursContext();
+  const { entreprisesState } = useEntreprisesContext();
+  const { getEntreprises } = useEntreprisesActions();
+
   useEffect(() => {
+    getEntreprises();
     getUtilisateurs(searchParams.toString());
   }, [searchParams]);
   return (
@@ -20,13 +27,13 @@ export function UtilisateursPage() {
       <BreadcrumbUtilisateurs />
       <div className="flex items-center justify-between">
         <ButtonCreateUtilisateur />
-        <ButtonFilterUtilisateur />
+        <ButtonFilterUtilisateur  entreprises={entreprisesState?.entreprises} />
       </div>
-      {/* {utilisateursState.isLoading ? (
+      {utilisateursState.isLoading ? (
         <LoaderUtilisateursList />
       ) : (
-        )} */}
         <UtilisateursList utilisateurs={utilisateursState.utilisateurs} />
+        )}
       <Pagination
         isLoading={utilisateursState.isLoading}
         pagination={utilisateursState.pagination}
