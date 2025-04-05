@@ -1,3 +1,4 @@
+import { EntreprisesProvider } from "../entreprise/context/entreprises/EntreprisesProvider";
 import { UtilisateurProvider } from "./context/utilisateur/UtilisateurProvider";
 import { UtilisateursProvider } from "./context/utilisateurs/UtilisateursProvider";
 import { CreateUtilisateurPage } from "./pages/CreateUtilisateurPage";
@@ -15,20 +16,26 @@ const utilisateurRoutes = [
         element: <UtilisateursPage />,
       },
       {
-        path: "create",
-        element: <CreateUtilisateurPage />,
-      },
-      {
-        path: ":utilisateur_id",
-        element: <UtilisateurProvider />,
+        path: "",
+        element: <EntreprisesProvider />,
         children: [
           {
-            path: "update",
-            element: <UpdateUtilisateurPage />,
+            path: "create",
+            element: <CreateUtilisateurPage />,
+          },
+          {
+            path: ":utilisateur_id",
+            element: <UtilisateurProvider />,
             children: [
               {
-                path: "password",
-                element: <UpdatePasswordUtilisateurPage />,
+                path: "update",
+                element: <UpdateUtilisateurPage />,
+                children: [
+                  {
+                    path: "password",
+                    element: <UpdatePasswordUtilisateurPage />,
+                  },
+                ],
               },
             ],
           },
